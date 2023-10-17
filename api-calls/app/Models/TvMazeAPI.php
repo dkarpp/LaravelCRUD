@@ -18,7 +18,7 @@ class TvMazeAPI{
             //We are using firstOrCreate so that if a model isnt found it'll automatically create one. 
             return Episode::firstOrCreate(
                 ['name' => $episode['name'],
-                'image' => $episode['image']['original'],
+                'image' => $episode['image']['original'] ?? '',
                 'season' => $episode['season'],
                 'episode' => $episode['number'],
                 'summary' => strip_tags($episode['summary']), //strip_tags()
