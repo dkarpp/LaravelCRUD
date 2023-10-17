@@ -12,20 +12,27 @@
     <div class="container-fluid">
     <h1 class="display-1">Episodes</h1>
     <div class="row row-cols-1 row-cols-md-3 g-4">
-        @foreach ($episodes as $episode)
+
+    <!-- Switched from foreach to forelse so I can just do the @empty check and print a message -->
+        @forelse ($episodes as $episode)
+   
         <div class="col">
             <div class="card h-100">
-                <img src="<?= $episode->imageUrl ?>" class="card-img-top">
+                <img src="{{ $episode->image }}" class="card-img-top">
                 <div class="card-body">
-                    <h5 class="card-title"><?= $episode->name ?></h5>
-                    <p class="card-text"><?= $episode->summary ?></p>
+                    <h5 class="card-title">{{ $episode->name }}</h5>
+                    <p class="card-text">{{ $episode->summary }}</p>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted">Season <?= $episode->season ?>, Episode <?= $episode->episode ?></small>
+                    <small class="text-muted">Season {{ $episode->season }}, Episode {{ $episode->episode }}</small>
                 </div>
             </div>
         </div>
-        @endforeach
+        @empty
+        <h5>There are no episodes to show</h5>
+
+        
+        @endforelse
     </div>
 </div>
     

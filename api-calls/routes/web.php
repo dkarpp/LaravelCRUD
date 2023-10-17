@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\TvMazeAPI;
+use App\Models\Episode;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +19,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/episodes', function () {
+Route::get('/load-episodes', function () {
     $showNumber = intval(request()->query('showNumber'));
     $showNumber = $showNumber < 1 ? 1 : $showNumber;
 
@@ -37,4 +38,12 @@ Route::get('/episodes', function () {
 
     */
 });
+Route::get('/view-episodes', function () {
+    $showNumber = intval(request()->query('showNumber'));
+    $showNumber = $showNumber < 1 ? 1 : $showNumber;
+
+    $episodes = Episode::where('show_number', $showNumber)->get();
+    return view('episodes/index', ['episodes' => $episodes]);
+});
+
 
