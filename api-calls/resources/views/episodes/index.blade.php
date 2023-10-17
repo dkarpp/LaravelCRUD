@@ -13,7 +13,7 @@
     <h1 class="display-1">Episodes</h1>
     <div class="row row-cols-1 row-cols-md-3 g-4">
 
-    <!-- Switched from foreach to forelse so I can just do the @empty check and print a message -->
+    <!-- Switched from foreach to forelse so I can just do the empty check and print a message -->
         @forelse ($episodes as $episode)
    
         <div class="col">
