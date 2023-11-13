@@ -15,13 +15,8 @@ class SeedProducts extends Seeder
      */
     public function run(): void
     {
-        //
-        //DB::table('products')->truncate();
         Product::query()->delete();
-
-
         $faker = Factory::create();
-
 
         foreach(range(1, 30) as $number){
             Product::create([
@@ -33,6 +28,7 @@ class SeedProducts extends Seeder
             ]);
         }
         //'name', 'price', 'description', 'item_number', 'image'
+        //php artisan db:seed
 
     }
 }
